@@ -15,7 +15,11 @@ markets = soup.find_all(class_ = 'mlm')
 
 with open("linella_markets.csv", "w", newline = '') as lm_file:
     csv_writer = csv.writer(lm_file)
+    
+    # write first row
+    csv_writer.writerow(["index", "title", "address", "timetable", "latitude", "longitude"])
 
+    # write each market
     for market in markets:
         index = market['data-index']
         lat = market['data-map-lat']
